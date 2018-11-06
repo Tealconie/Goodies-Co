@@ -1,0 +1,43 @@
+
+/**
+ * Write a description of class Company here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class Costumer
+{
+    // instance variables - replace the example below with your own
+    private double money;
+    private double salesPrice;
+    private double debt;
+    private double costs;
+
+    /**
+     * Constructor for objects of class Company
+     */
+    public Costumer(double money, double salesPrice, double debt, double costs)
+    {
+        this.money = money;
+        this.salesPrice = salesPrice;
+        this.debt = debt;
+        this.costs = costs;
+    }
+
+
+    public double getDebt()
+    {
+        return debt;
+    }
+
+    public double payDebt()
+    {
+        if (money > debt){
+            money -= debt;
+        }
+        else{
+           System.out.println("Unfortunately you do not possess enough money to pay off your debt.");
+        }
+        return debt;
+    }
+}
