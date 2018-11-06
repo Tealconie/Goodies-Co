@@ -1,3 +1,4 @@
+
 /**
  * Write a description of class Company here.
  *
@@ -7,14 +8,37 @@
 public class Company
 {
     // instance variables - replace the example below with your own
-    private int ;
+    private double money;
+    private Products products;
+    private double salesPrice;
+    private double debt;
 
     /**
      * Constructor for objects of class Company
      */
-    public Company()
+    public Company(double money, double salesPrice, double debt)
     {
-        // initialise instance variables
-        x = 0;
+        this.money = money;
+        this.salesPrice = salesPrice;
+        this.debt = debt;
     }
- }
+    
+    public double getMonthlyReport()
+    {
+        
+        
+        return debt;
+    }
+    
+    
+    
+    public double getProfit()
+    {
+        return profit;
+    }
+    
+    public double getDebt()
+    {
+        return debt;
+    }
+}
