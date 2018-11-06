@@ -25,11 +25,16 @@ public class Company
     
     public double getMonthlyReport()
     {
-        
-        
-        return debt;
+        System.out.println("Profit" + getProfit());
+        System.out.println("Debt" + getDebt());
+        System.out.println("Current Cash" + getMoney());
+        return money;
     }
     
+    public double getMoney()
+    {
+        return money;
+    }
     
     
     public double getProfit()
