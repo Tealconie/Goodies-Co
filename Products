@@ -10,6 +10,7 @@ public class Products
     private int amtSold;
     private double salesPrice;
     private int pricePerCase;
+    private String productName;
     /**
      * Constructor for objects of class Products
      */
