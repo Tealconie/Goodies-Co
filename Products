@@ -10,13 +10,14 @@ public class Products
     private int amtSold;
     private double salesPrice;
     private int pricePerCase;
-    private String productName;
     /**
      * Constructor for objects of class Products
      */
-    public Products()
+    public Products(int quantity, int pricePerCase, double salesPrice)
     {
-        
+        this.quantity = quantity;
+        this.pricePerCase = pricePerCase;
+        this.salesPrice = salesPrice;
     }
     
     public int getQuantity(){
@@ -34,4 +35,10 @@ public class Products
     public void setSalesPrice(double newPrice){
         salesPrice = newPrice;
     }
+    
+    public void reStock(int newQuantity){
+        quantity = newQuantity;
+    }
+    
+    
 }
