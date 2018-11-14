@@ -1,1 +1,36 @@
-
+/**
+ * Write a description of class Products here.
+ *
+ * @KSu & Lanah
+ * @1.8
+ */
+public class Products
+{
+    private int quantity;
+    private int amtSold;
+    private double salesPrice;
+    private int pricePerCase;
+    /**
+     * Constructor for objects of class Products
+     */
+    public Products()
+    {
+        
+    }
+    
+    public int getQuantity(){
+        return quantity;
+    }
+    
+    public int getAmtSold(){
+        return amtSold;
+    }
+    
+    public double getSalesPrice(){
+        return salesPrice;
+    }
+    
+    public void setSalesPrice(double newPrice){
+        salesPrice = newPrice;
+    }
+}
