@@ -1,6 +1,5 @@
 Sunkist,45,39,1.25
 Coca Cola,45,39,1.25
-Coca Cola,45,39,1.25
 Ice Tea,45,38,1.25
 Yoohoo,45,35,0.50
 Sprite,45,38,1.25
