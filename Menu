@@ -1,45 +1,35 @@
 
 /**
- * Write a description of class Company here.
+ * Write a description of class Main here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Customer
+import java.util.Scanner;
+public class Menu
 {
-    // instance variables - replace the example below with your own
-    private double money;
-    private double salesPrice;
-    private double debt;
-    private double costs;
+    private Scanner scan = new Scanner(System.in);
+    private int choice;
+    private Customer customer;
+    private Company employee;
 
-    /**
-     * Constructor for objects of class Company
-     */
-    public Customer(double money, double salesPrice, double debt, double costs)
+    public Menu()
     {
-        this.money = money;
-        this.salesPrice = salesPrice;
-        this.debt = debt;
-        this.costs = costs;
-    }
-
-
-    public double getDebt()
-    {
-        return debt;
-    }
-
-    public double payDebt()
-    {
-        if (money > debt){
-            money -= debt;
+        System.out.println("Please answer the following questions with numbers");
+        System.out.println("Are you a: \n 1. Costomer \n 2. Employee");
+        choice = scan.nextInt();
+        if (choice == 1){
+            
+        }
+        else if (choice == 2){
+            
         }
         else{
-           System.out.println("Unfortunately you do not possess enough money to pay off your debt.");
+            System.out.println("That option is invalid");
         }
-        return debt;
     }
+    
+
     
     
 }
