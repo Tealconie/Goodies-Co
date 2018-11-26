@@ -1,4 +1,5 @@
 
+
 /**
  * Write a description of class Company here.
  *
@@ -18,6 +19,7 @@ public class Company
     private double salesPrice;
     private double debt;
     private double profit;
+    private Scanner scan = new Scanner(System.in);
     /**
      * Constructor for objects of class Company
      */
@@ -29,6 +31,17 @@ public class Company
     }
 
     public Company(){
+        System.out.println("How much money does you company possess?");
+        double money = scan.nextDouble();
+
+        System.out.println("How much money does you company possess?");
+        double salesPrice = scan.nextDouble();
+
+        System.out.println("How much debt does you company possess?");
+        double debt = scan.nextDouble();
+
+        Company company = new Company(money,salesPrice,debt);
+        initializeProducts("data.txt");
     }
 
     public double getMonthlyReport()
@@ -89,6 +102,7 @@ public class Company
 
     public double getProfit()
     {
+        
         return profit;
     }
 
