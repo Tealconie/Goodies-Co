@@ -13,34 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 public class Company
 {
-    // instance variables - replace the example below with your own
     private double money;
     private List <Products> products = new ArrayList<>();
     private double salesPrice;
     private double debt;
     private double profit;
-    private Scanner scan = new Scanner(System.in);
     /**
      * Constructor for objects of class Company
      */
-    public Company(double money, double salesPrice, double debt)
+    public Company(double money)
     {
         this.money = money;
-        this.salesPrice = salesPrice;
-        this.debt = debt;
     }
 
     public Company(){
-        System.out.println("How much money does you company possess?");
-        double money = scan.nextDouble();
-
-        System.out.println("How much money does you company possess?");
-        double salesPrice = scan.nextDouble();
-
-        System.out.println("How much debt does you company possess?");
-        double debt = scan.nextDouble();
-
-        Company company = new Company(money,salesPrice,debt);
+        Scanner scan = new Scanner(System.in);
+        System.out.println("How much money does the Company have?");
+        money = scan.nextInt();
         initializeProducts("data.txt");
     }
 
@@ -55,12 +44,6 @@ public class Company
     public double getMoney()
     {
         return money;
-    }
-    
-    public void printProducts(){
-        for (int i = 0; i > products.size(); i++){
-            System.out.print(products.get(i).getName());
-        }
     }
 
     public void initializeProducts(String fileName){
@@ -103,7 +86,6 @@ public class Company
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     public double getProfit()
@@ -111,12 +93,21 @@ public class Company
         return profit;
     }
 
-    public void getProducts(){
+    public void printProducts(){
         for(int i = 0; i < products.size(); i++){
-            System.out.println(products.get(i).getName());
+            System.out.println((i + 1) + ". ");
+            System.out.println(products.get(i));
         }
     }
 
+    public List <Products> getProducts(){
+        return products;
+    }
+    
+    public Products getProduct(int productNumber){
+        return products.get(productNumber);
+    }
+    
     public double getDebt()
     {
         return debt;
