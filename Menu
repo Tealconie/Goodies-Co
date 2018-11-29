@@ -95,4 +95,9 @@ public class Menu
     public int getChoice(){
         return choice;
     }
+        public void setChoice(){
+        System.out.println("Please answer the following questions with numbers");
+        System.out.println("Are you a: \n 1. Costomer \n 2. Employee");
+        int choice = scan.nextInt(); 
+    }
 }
