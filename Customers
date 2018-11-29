@@ -1,72 +1,60 @@
 
+
 /**
  * Write a description of class Company here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
+
 import java.util.Scanner;
 public class Customer
 {
-    // instance variables - replace the example below with your own
+    private String name;
     private double money;
-    private double salesPrice;
     private double debt;
-    private double costs;
-    private Scanner scan = new Scanner(System.in);
-
+    private int studentID;
     /**
-     * Constructor for objects of class Company
+     * Constructor for objects of class Costumer
      */
-    public Customer(double money, double debt)
+    public Customer(double money, double debt, int studentID)
     {
         this.money = money;
         this.debt = debt;
+        this.studentID = studentID;
     }
 
     public Customer(){
-        System.out.println("How much money is in your possession?");
-        double money = scan.nextDouble();
-        System.out.println("How much debt do you possess?");
-        double debt = scan.nextDouble(); 
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter your name");
+        name = scan.next();
+        System.out.println("Please enter your student ID");
+        studentID = scan.nextInt();
+        System.out.println("How much money do you currently have?");
+        money = scan.nextInt();
     }
-
-    public void choice(){
-        boolean check = true;
-        while(check){
-            System.out.println("Would you like to pay off a debt or purchase a snack?");
-            int choice = scan.nextInt();
-            Customer customer = new Customer();
-            if (choice == 1){
-                customer.payDebt();
-                check = false;
-            }
-            else if (choice == 2){
-                Company company = new Company();
-                company.printProducts();
-                check = false;
-            }
-            else{
-                System.out.println("That option is invalid");
-            }
-        }
-    }
-
+       
     public double getDebt()
     {
         return debt;
     }
 
-    public double payDebt()
+    public double payDebt(double amount)
     {
-        System.out.println("Current Debt: " + debt + ".");
-        if (money > debt){
-            money -= debt;
-        }
-        else{
-            System.out.println("Unfortunately you do not possess enough money to pay off your debt.");
+        debt -= amount;
+        if(debt % -1 == 0){
+            money = -1 * debt;
+            debt = 0;         
         }
         return debt;
     }
-
+    
+    public void buyProduct(Products product){
+        money -= product.getSalesPrice();
+        if(money < 0){
+            debt = money * -1;
+            money = 0;
+        }
+        product.setQuantity(product.getQuantity() - 1);
+    }
 }
