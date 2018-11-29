@@ -49,9 +49,15 @@ public class Menu
             int choice = scan.nextInt();
 
             if (choice == 1){
-                System.out.println("How much debt would you like to pay off?");
-                double amt = scan.nextInt();
-                customer.payDebt(amt);
+                if (customer.getDebt() == 0){
+                    System.out.println("You have no debt");
+                }
+
+                else{
+                    System.out.println("How much debt would you like to pay off?");
+                    double amt = scan.nextInt();
+                    customer.payDebt(amt);
+                }
             }
             else if (choice == 2){
                 company.getProducts();
