@@ -37,7 +37,7 @@ public class Menu
     public void customerChoices(){
         boolean check = true;
         while(check){
-            System.out.println("Would you like to pay off a debt or purchase a snack?");
+            printCustomerMenu();
             int choice = scan.nextInt();
 
             if (choice == 1){
@@ -56,24 +56,41 @@ public class Menu
     }
 
     public void employeeChoices(){
+        boolean check = true;
+        while(check){
+            printEmployeeMenu();
+            int choice = scan.nextInt();
 
+            if (choice == 1){
+                company.payDebt();
+                check = false;
+            }
+            else if (choice == 2){
+                
+            }
+            else{
+                
+            }
+        }
     }
 
-        public void printEmployeeMenu(){
+    public void printEmployeeMenu(){
         System.out.println("Would you like to...");
-        System.out.println(" ");
+        System.out.println();
         System.out.println("1. Pay off Debt");
         System.out.println("2. ");
         System.out.println("3. ");
         System.out.println("4. ");
+        System.out.println();
     }
 
     public void printCustomerMenu(){
         System.out.println("Would you like to...");
-        System.out.println(" ");
+        System.out.println();
         System.out.println("1. Buy Product");
         System.out.println("2. Pay off Debt");
         System.out.println("3. ");
         System.out.println("4. ");
+        System.out.println();
     }
 }
