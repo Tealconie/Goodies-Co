@@ -1,60 +1,59 @@
 
 
+
 /**
- * Write a description of class Company here.
+ * Write a description of class Products here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @KSu & Lanah
+ * @1.8
  */
-
-import java.util.Scanner;
-public class Customer
+public class Products
 {
-    private String name;
-    private double money;
-    private double debt;
-    private int studentID;
+    private int quantityPerCase;
+    private int amtSold;
+    private double salesPrice;
+    private int pricePerCase;
+    private String productName;
+    private int quantity;
     /**
-     * Constructor for objects of class Costumer
+     * Constructor for objects of class Products
      */
-    public Customer(double money, double debt, int studentID)
+    public Products(String name, int quantityPerCase, int casePrice, double salePrice)
     {
-        this.money = money;
-        this.debt = debt;
-        this.studentID = studentID;
-    }
-
-    public Customer(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter your name");
-        name = scan.next();
-        System.out.println("Please enter your student ID");
-        studentID = scan.nextInt();
-        System.out.println("How much money do you currently have?");
-        money = scan.nextInt();
-    }
-       
-    public double getDebt()
-    {
-        return debt;
-    }
-
-    public double payDebt(double amount)
-    {
-        debt -= amount;
-        if(debt % -1 == 0){
-            money = -1 * debt;
-            debt = 0;         
-        }
-        return debt;
+        productName = name;
+        this.quantityPerCase = quantityPerCase;
+        this.salesPrice = salesPrice;
+        pricePerCase = casePrice;
+        quantity = quantityPerCase;
     }
     
-    public void buyProduct(Products product){
-        money -= product.getSalesPrice();
-        if(money < 0){
-            debt = money * -1;
-            money = 0;
-        }
-        product.setQuantity(product.getQuantity() - 1);
+    public String toString(){
+        String returnString = "";
+        returnString += productName + " " + salesPrice;
+        return returnString;
+    }
+    
+    public String getName(){
+        return productName;
+    }
+    
+    public void setQuantity(int quantity){
+        this.quantity = quantity;        
+    }
+    
+    public int getQuantity(){
+        return quantity;
+    }
+    
+    public int getAmtSold(){
+        return amtSold;
+    }
+    
+    public double getSalesPrice(){
+        return salesPrice;
+    }
+    
+    public void setSalesPrice(double newPrice){
+        salesPrice = newPrice;
     }
 }
