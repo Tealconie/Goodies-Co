@@ -56,6 +56,12 @@ public class Company
     {
         return money;
     }
+    
+    public void printProducts(){
+        for (int i = 0; i > products.size(); i++){
+            System.out.print(products.get(i).getName());
+        }
+    }
 
     public void initializeProducts(String fileName){
         File file = new File(fileName);
