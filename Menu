@@ -59,5 +59,21 @@ public class Menu
 
     }
 
-    
+        public void printEmployeeMenu(){
+        System.out.println("Would you like to...");
+        System.out.println(" ");
+        System.out.println("1. Pay off Debt");
+        System.out.println("2. ");
+        System.out.println("3. ");
+        System.out.println("4. ");
+    }
+
+    public void printCustomerMenu(){
+        System.out.println("Would you like to...");
+        System.out.println(" ");
+        System.out.println("1. Buy Product");
+        System.out.println("2. Pay off Debt");
+        System.out.println("3. ");
+        System.out.println("4. ");
+    }
 }
