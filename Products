@@ -6,24 +6,36 @@
  */
 public class Products
 {
-    private int quantity;
+    private int quantityPerCase;
     private int amtSold;
     private double salesPrice;
     private int pricePerCase;
     private String productName;
+    private int quantity;
     /**
      * Constructor for objects of class Products
      */
-    public Products(String name, int quantity, int casePrice, double salePrice)
+    public Products(String name, int quantityPerCase, int casePrice, double salePrice)
     {
         productName = name;
-        this.quantity = quantity;
+        this.quantityPerCase = quantityPerCase;
         this.salesPrice = salesPrice;
         pricePerCase = casePrice;
+        quantity = quantityPerCase;
+    }
+    
+    public String toString(){
+        String returnString = "";
+        returnString += productName + " " + salesPrice;
+        return returnString;
     }
     
     public String getName(){
         return productName;
+    }
+    
+    public void setQuantity(int quantity){
+        this.quantity = quantity;        
     }
     
     public int getQuantity(){
