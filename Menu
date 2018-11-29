@@ -19,14 +19,39 @@ public class Menu
         System.out.println("Are you a: \n 1. Costomer \n 2. Employee");
         choice = scan.nextInt();
         if (choice == 1){
-            
+            Customer customer = new Customer();
         }
         else if (choice == 2){
-            
+            Company company = new Company();
         }
         else{
             System.out.println("That option is invalid");
         }
+    }
+    
+    public void customerChoices(){
+        boolean check = true;
+        while(check){
+            System.out.println("Would you like to pay off a debt or purchase a snack?");
+            int choice = scan.nextInt();
+        
+            if (choice == 1){
+                customer.payDebt();
+                check = false;
+            }
+            else if (choice == 2){
+                Company company = new Company();
+                company.printProducts();
+               check = false;
+            }
+            else{
+                System.out.println("That option is invalid");
+            }
+        }
+    }
+    
+    public void employeeChoices(){
+        
     }
     
 
