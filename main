@@ -1,0 +1,20 @@
+/**
+ * Write a description of class main here.
+ *
+ * @KSu 
+ * @version (a version number or a date)
+ */
+public class main
+{
+    public static void main(String[] args){
+        Menu menu = new Menu();
+        while(menu.getYesNo() == true){
+            if(menu.getChoice() == 1){
+                menu.customerChoices();
+            }
+            if(menu.getChoice() == 2){
+                menu.companyChoices();
+            }
+        }
+    }
+}
