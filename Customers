@@ -18,31 +18,39 @@ public class Customer
     /**
      * Constructor for objects of class Company
      */
-    public Customer(double money, double salesPrice, double debt, double costs)
+    public Customer(double money, double debt)
     {
         this.money = money;
-        this.salesPrice = salesPrice;
         this.debt = debt;
-        this.costs = costs;
     }
-    
+
     public Customer(){
         System.out.println("How much money is in your possession?");
         double money = scan.nextDouble();
-        System.out.println("Would you like to pay off a debt or purchase a snack?");
-        int choice = scan.nextInt();
-        Customer customer = new Customer();
-        if (choice == 1){
-            customer.payDebt();
-        }
-        else if (choice == 2){
-            Customer();
-        }
-        else{
-            System.out.println("That option is invalid");
-        }
+        System.out.println("How much debt do you possess?");
+        double debt = scan.nextDouble(); 
     }
 
+    public void choice(){
+        boolean check = true;
+        while(check){
+            System.out.println("Would you like to pay off a debt or purchase a snack?");
+            int choice = scan.nextInt();
+            Customer customer = new Customer();
+            if (choice == 1){
+                customer.payDebt();
+                check = false;
+            }
+            else if (choice == 2){
+                Company company = new Company();
+                company.printProducts();
+                check = false;
+            }
+            else{
+                System.out.println("That option is invalid");
+            }
+        }
+    }
 
     public double getDebt()
     {
@@ -51,14 +59,14 @@ public class Customer
 
     public double payDebt()
     {
+        System.out.println("Current Debt: " + debt + ".");
         if (money > debt){
             money -= debt;
         }
         else{
-           System.out.println("Unfortunately you do not possess enough money to pay off your debt.");
+            System.out.println("Unfortunately you do not possess enough money to pay off your debt.");
         }
         return debt;
     }
-    
-    
+
 }
