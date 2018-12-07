@@ -9,12 +9,18 @@ public class main
     public static void main(String[] args){
         Menu menu = new Menu();
         while(menu.getYesNo() == true){
-            menu.setChoice();
             if(menu.getChoice() == 1){
                 menu.customerChoices();
             }
-            if(menu.getChoice() == 2){
+            else if(menu.getChoice() == 2){
                 menu.companyChoices();
+            }
+            menu.setYesNo();
+            if(menu.getYesNo()){
+               menu.setChoice();
+            }
+            else{
+               menu.getClosingStatement();
             }
         }
     }
