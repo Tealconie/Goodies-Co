@@ -1,7 +1,4 @@
 
-
-
-
 /**
  * Write a description of class Company here.
  *
@@ -29,11 +26,11 @@ public class Customer
     public Customer(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter your name");
-        name = scan.next();
+        name = scan.nextLine();
         System.out.println("Please enter your student ID");
         studentID = scan.nextInt();
         System.out.println("How much money do you currently have?");
-        money = scan.nextInt();
+        money = scan.nextDouble();
     }
        
     public double getDebt()
@@ -51,12 +48,14 @@ public class Customer
         return debt;
     }
     
-    public void buyProduct(Products product){
-        money -= product.getSalesPrice();
+    public void buyProduct(Products product, int numBought){
+        money -= product.getSalesPrice() * numBought;
         if(money < 0){
             debt = money * -1;
             money = 0;
         }
-        product.setQuantity(product.getQuantity() - 1);
+        product.setQuantity(product.getQuantity() - numBought);
+        product.setAmtSold(numBought);
+        System.out.println("Thank you for buying, " + numBought + " " + product.getName() + " for a total of " + (product.getSalesPrice() * numBought));
     }
 }
