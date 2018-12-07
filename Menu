@@ -1,5 +1,3 @@
-
-
 /**
  * Write a description of class Main here.
  *
@@ -25,30 +23,25 @@ public class Menu
 
     public void printEmployeeMenu(){
         System.out.println("Would you like to...");
-        System.out.println(" ");
+        System.out.println();
         System.out.println("1. Pay off Debt");
         System.out.println("2. Print Inventory");
-        System.out.println("3. ");
-        System.out.println("4. ");
     }
 
     public void printCustomerMenu(){
         System.out.println("Would you like to...");
-        System.out.println(" ");
-        System.out.println("1. Buy Product");
-        System.out.println("2. Pay off Debt");
-        System.out.println("3. ");
-        System.out.println("4. ");
+        System.out.println();
+        System.out.println("1. Pay off Debt");
+        System.out.println("2. Buy Product");
     }
 
     public void customerChoices(){
         boolean check = true;
         customer = new Customer();
         while(check){
-            System.out.println("Would you like to pay off a debt (1) or purchase a snack (2)?");
-            int choice = scan.nextInt();
-
-            if (choice == 1){
+            printCustomerMenu();
+            int customerChoice = scan.nextInt();
+            if (customerChoice == 1){
                 if (customer.getDebt() == 0){
                     System.out.println("You have no debt");
                 }
@@ -59,11 +52,17 @@ public class Menu
                     customer.payDebt(amt);
                 }
             }
-            else if (choice == 2){
-                company.getProducts();
+            else if (customerChoice == 2){
+                company.printProducts();
                 System.out.println("Please enter the number of the item you would like to buy");
                 int productNumber = scan.nextInt();
-                customer.buyProduct(company.getProduct(productNumber));
+                System.out.println("How many of this item would you like to buy?");
+                int numberOfProducts = scan.nextInt();
+                if(numberOfProducts > company.getProduct(productNumber).getQuantity()){
+                    company.restock(company.getProduct(productNumber));
+                }
+                customer.buyProduct(company.getProduct(productNumber), numberOfProducts);
+                company.setMoney(((company.getProduct(productNumber).getSalesPrice() * numberOfProducts) +  company.getMoney()));
             }
             else{
                 System.out.println("That option is invalid");
@@ -71,7 +70,7 @@ public class Menu
 
             boolean dataCheck = true;
             while(dataCheck){
-                System.out.println("Would you like to continue? 1 or 2");
+                System.out.println("Would you like to continue in this menu? 1 (yes) or 2 (no)");
                 choice = scan.nextInt();
                 if(choice == 1){
                     dataCheck = false;
@@ -85,6 +84,42 @@ public class Menu
     }
     
     public void companyChoices(){
+        boolean check = true;
+        while(check){
+            printEmployeeMenu();
+            int employeeChoice = scan.nextInt();
+            if (employeeChoice == 1){
+                if (company.getDebt() == 0){
+                    System.out.println("You have no debt");
+                }
+
+                else{
+                    System.out.println("How much debt would you like to pay off?");
+                    double amt = scan.nextInt();
+                    company.payDebt(amt);
+                }
+            }
+            else if (employeeChoice == 2){
+                company.getInventory();
+            }
+            else{
+                System.out.println("That option is invalid");
+            }
+            
+            
+            boolean dataCheck = true;
+            while(dataCheck){
+                System.out.println("Would you like to continue in this menu? 1 (yes) or 2 (no)");
+                choice = scan.nextInt();
+                if(choice == 1){
+                    dataCheck = false;
+                }
+                if(choice == 2){
+                    check = false;
+                    dataCheck = false;
+                }
+            }
+        }
     }
     
 
@@ -95,9 +130,31 @@ public class Menu
     public int getChoice(){
         return choice;
     }
-        public void setChoice(){
+    
+    public void setChoice(){
         System.out.println("Please answer the following questions with numbers");
         System.out.println("Are you a: \n 1. Costomer \n 2. Employee");
-        int choice = scan.nextInt(); 
+        choice = scan.nextInt(); 
+    }
+    
+    public void setYesNo(){
+        boolean datacheck = true;
+        String input = "";
+        System.out.println("Would you like to continue using this program? Y/N");
+        while(datacheck){
+            input = scan.nextLine();
+            input = input.toUpperCase();
+            if(input.equals("Y")){
+                datacheck = false;                
+            }
+            else if (input.equals("N")){
+                datacheck = false;
+                yesNo = false;
+            }
+        }
+    }
+    
+    public void getClosingStatement(){
+        System.out.println("Thanks for using this Vending machine. This session the company net " + company.calculateNetProfit() + " dollars and sold " + company.calculateAmtSold() + " unit(s) of products.");
     }
 }
