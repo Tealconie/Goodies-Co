@@ -1,5 +1,4 @@
 
-
 /**
  * Write a description of class Company here.
  *
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Company
 {
+    private double initialMoney;
     private double money;
     private List <Products> products = new ArrayList<>();
     private double salesPrice;
@@ -29,7 +29,8 @@ public class Company
     public Company(){
         Scanner scan = new Scanner(System.in);
         System.out.println("How much money does the Company have?");
-        money = scan.nextInt();
+        money = scan.nextDouble();
+        initialMoney = money;
         initializeProducts("data.txt");
     }
 
@@ -95,21 +96,62 @@ public class Company
 
     public void printProducts(){
         for(int i = 0; i < products.size(); i++){
-            System.out.println((i + 1) + ". ");
-            System.out.println(products.get(i));
+            System.out.print((i + 1) + ". ");
+            System.out.print(products.get(i));
+            System.out.println();
         }
     }
 
+    public void getInventory(){
+                for(int i = 0; i < products.size(); i++){
+            System.out.print((i + 1) + ". ");
+            System.out.print(products.get(i).getName() + " " + products.get(i).getQuantity());
+            System.out.println();
+        }
+    }
+    
     public List <Products> getProducts(){
         return products;
     }
-    
+
     public Products getProduct(int productNumber){
-        return products.get(productNumber);
+        return products.get(productNumber - 1);
     }
-    
+
     public double getDebt()
     {
         return debt;
+    }
+    
+    public void restock(Products product){
+        money -= product.getPricePerCase();
+        product.setQuantity(product.getQuantity() + product.getQuantityPerCase());
+    }
+    
+    public double payDebt(double amount)
+    {
+        debt -= amount;
+        if(debt % -1 == 0){
+            money = -1 * debt;
+            debt = 0;         
+        }
+        return debt;
+    }
+    
+    public double calculateNetProfit(){
+        double netMoney = money - initialMoney;
+        return netMoney;
+    }
+    
+    public int calculateAmtSold(){
+        int amtSold = 0;
+        for(int i = 0; i<products.size(); i++){
+            amtSold += products.get(i).getAmtSold();            
+        }
+        return amtSold;
+    }
+    
+    public void setMoney(double amt){
+        money = amt;
     }
 }
